@@ -16,7 +16,57 @@
   <script src="script.js" defer></script>
 </head>
 <body>
-  <div class="noise-bg"></div>
+  <!-- The SVG filter definition for noise -->
+    <svg>
+      <filter id="noise">
+        <feTurbulence type="fractalNoise" baseFrequency="0.75" numOctaves="3" stitchTiles="stitch" />
+        <feColorMatrix type="saturate" values="0" />
+      </filter>
+    </svg>
+
+    <!-- This div will have the SVG filter applied to it -->
+    <div class="noise-filter"></div>
+  <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #000000;
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative; /* This is important for the overlay to work */
+        }
+
+        /* SVG filter for the noise effect */
+        .noise-filter {
+            filter: url(#noise);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: 1; /* Place it on top of the background */
+            background-color: transparent;
+            opacity: 0.2; /* Adjust this value to change the intensity */
+        }
+
+        .content {
+            position: relative;
+            z-index: 2; /* Ensures content is on top of the noise layer */
+            text-align: center;
+            padding: 2rem;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+        }
+    </style>
 
   <!-- Particles container -->
   <div id="particles-js" aria-hidden="true"></div>
