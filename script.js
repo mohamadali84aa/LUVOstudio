@@ -6,9 +6,11 @@ menuBtn.addEventListener('click', () => {
   const isOpen = menuBtn.classList.toggle('open');
   if (isOpen) {
     mobileMenu.classList.add('open');
+    mobileMenu.removeAttribute('hidden');
     menuBtn.setAttribute('aria-expanded', 'true');
   } else {
     mobileMenu.classList.remove('open');
+    mobileMenu.setAttribute('hidden', '');
     menuBtn.setAttribute('aria-expanded', 'false');
   }
 });
@@ -17,12 +19,30 @@ menuBtn.addEventListener('click', () => {
 document.addEventListener('click', (e) => {
   if (!mobileMenu.contains(e.target) && !menuBtn.contains(e.target)) {
     mobileMenu.classList.remove('open');
+    mobileMenu.setAttribute('hidden', '');
     menuBtn.classList.remove('open');
     menuBtn.setAttribute('aria-expanded', 'false');
   }
 });
 
-// Initialize particles.js with smooth interaction like your example
+// Smooth scroll for all nav links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', e => {
+    e.preventDefault();
+    const target = document.querySelector(anchor.getAttribute('href'));
+    if(target) target.scrollIntoView({ behavior: 'smooth' });
+
+    // Close mobile menu on click
+    if (mobileMenu.classList.contains('open')) {
+      mobileMenu.classList.remove('open');
+      mobileMenu.setAttribute('hidden', '');
+      menuBtn.classList.remove('open');
+      menuBtn.setAttribute('aria-expanded', 'false');
+    }
+  });
+});
+
+// Initialize particles.js with smooth interaction covering entire page
 particlesJS('particles-js', {
   particles: {
     number: { value: 40, density: { enable: true, value_area: 800 } },
