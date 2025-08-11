@@ -1,4 +1,4 @@
-// Toggle hamburger menu open/close
+// Hamburger menu toggle
 const menuBtn = document.getElementById('menuBtn');
 const mobileMenu = document.getElementById('mobileMenu');
 
@@ -22,63 +22,42 @@ document.addEventListener('click', (e) => {
   }
 });
 
-// Initialize particles.js
+// Initialize particles.js with smooth interaction like your example
 particlesJS('particles-js', {
-  "particles": {
-    "number": {
-      "value": 100,
-      "density": {
-        "enable": true,
-        "value_area": 700
-      }
+  particles: {
+    number: { value: 40, density: { enable: true, value_area: 800 } },
+    color: { value: '#ffffff' },
+    shape: { type: 'circle' },
+    opacity: { value: 0.7, random: false },
+    size: { value: 3, random: true },
+    line_linked: {
+      enable: true,
+      distance: 150,
+      color: '#ffffff',
+      opacity: 0.3,
+      width: 1,
     },
-    "color": { "value": "#ffffff" },
-    "shape": {
-      "type": "circle"
+    move: {
+      enable: true,
+      speed: 2,
+      direction: 'none',
+      random: false,
+      straight: false,
+      out_mode: 'out',
+      bounce: false,
     },
-    "opacity": {
-      "value": 0.85,
-      "random": true,
-      "anim": { "enable": false }
-    },
-    "size": {
-      "value": 2,
-      "random": true,
-      "anim": { "enable": false }
-    },
-    "line_linked": {
-      "enable": true,
-      "distance": 140,
-      "color": "#ffffff",
-      "opacity": 0.18,
-      "width": 1
-    },
-    "move": {
-      "enable": true,
-      "speed": 1.6,
-      "direction": "none",
-      "random": true,
-      "straight": false,
-      "out_mode": "bounce",
-      "bounce": true,
-      "attract": {
-        "enable": true,
-        "rotateX": 600,
-        "rotateY": 1200
-      }
-    }
   },
-  "interactivity": {
-    "detect_on": "canvas",
-    "events": {
-      "onhover": { "enable": true, "mode": "grab" },
-      "onclick": { "enable": true, "mode": "push" },
-      "resize": true
+  interactivity: {
+    detect_on: 'canvas',
+    events: {
+      onhover: { enable: true, mode: 'repulse' },
+      onclick: { enable: true, mode: 'push' },
+      resize: true,
     },
-    "modes": {
-      "grab": { "distance": 160, "line_linked": { "opacity": 0.45 } },
-      "push": { "particles_nb": 4 }
-    }
+    modes: {
+      repulse: { distance: 120, duration: 0.5 },
+      push: { particles_nb: 4 },
+    },
   },
-  "retina_detect": true
+  retina_detect: true,
 });
