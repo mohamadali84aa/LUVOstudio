@@ -1,61 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>LUVO - Minimal Black & White</title>
-
-<!-- Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-
-<!-- Styles -->
-<link rel="stylesheet" href="style.css" />
-
-<!-- particles.js library -->
-<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>LUVO - Minimal Black & White</title>
+  
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="style.css" />
+  
+  <!-- particles.js library -->
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
 </head>
 <body>
-
-<!-- particles container -->
-<div id="particles-js"></div>
-
-<header class="header">
-  <div class="header-inner">
-    <a href="#home" class="brand">LUVO</a>
-
-    <nav class="nav-links" id="navLinks" aria-label="Primary navigation">
+  <!-- particles container -->
+  <div id="particles-js"></div>
+  
+  <header class="header">
+    <div class="header-inner">
+      <a href="#home" class="brand">LUVO</a>
+      
+      <nav class="nav-links" id="navLinks" aria-label="Primary navigation">
+        <a href="#home">Home</a>
+        <a href="#services">Services</a>
+        <a href="#portfolio">Portfolio</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      
+      <button id="menuBtn" class="menu-btn" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    
+    <nav id="mobileMenu" class="mobile-menu" aria-label="Mobile navigation">
       <a href="#home">Home</a>
       <a href="#services">Services</a>
       <a href="#portfolio">Portfolio</a>
       <a href="#about">About</a>
       <a href="#contact">Contact</a>
     </nav>
-
-    <button id="menuBtn" class="menu-btn" aria-label="Open menu" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
-
-  <nav id="mobileMenu" class="mobile-menu" aria-label="Mobile navigation">
-    <a href="#home">Home</a>
-    <a href="#services">Services</a>
-    <a href="#portfolio">Portfolio</a>
-    <a href="#about">About</a>
-    <a href="#contact">Contact</a>
-  </nav>
-</header>
-
-<main>
-  <section id="home" class="hero">
-    <h1>LUVO</h1>
-    <p>Capturing moments. Crafting stories.</p>
-    <a href="#portfolio" class="cta">View Portfolio</a>
-  </section>
-
-  <!-- other sections omitted for brevity; replicate as needed -->
-
-</main>
-
-<script src="script.js"></script>
+  </header>
+  
+  <main>
+    <section id="home" class="hero">
+      <h1>LUVO</h1>
+      <p>Capturing moments. Crafting stories.</p>
+      <a href="#portfolio" class="cta">View Portfolio</a>
+    </section>
+    <!-- Add other sections here -->
+  </main>
+  
+  <script src="script.js"></script>
 </body>
 </html>
