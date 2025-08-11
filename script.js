@@ -1,29 +1,59 @@
 document.addEventListener('DOMContentLoaded', () => {
   const header = document.querySelector('.header');
-  const menuBtn = document.querySelector('.menu-btn');
-  const mobileMenu = document.querySelector('.mobile-menu');
+  const menuBtn = document.getElementById('menuBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
 
-  // Hamburger menu toggle
+  // Hamburger menu toggle with smooth height animation
   menuBtn.addEventListener('click', () => {
-    const expanded = menuBtn.getAttribute('aria-expanded') === 'true';
+    const isExpanded = menuBtn.getAttribute('aria-expanded') === 'true';
 
-    menuBtn.setAttribute('aria-expanded', !expanded);
-    header.classList.toggle('open');
+    if (isExpanded) {
+      // Close menu
+      menuBtn.setAttribute('aria-expanded', 'false');
+      // Animate max-height to 0 and fade out
+      mobileMenu.style.maxHeight = mobileMenu.scrollHeight + 'px'; // start from current height
+      requestAnimationFrame(() => {
+        mobileMenu.style.transition = 'max-height 0.35s ease, opacity 0.35s ease';
+        mobileMenu.style.maxHeight = '0';
+        mobileMenu.style.opacity = '0';
+      });
+
+      // After animation, hide menu
+      setTimeout(() => {
+        mobileMenu.hidden = true;
+        mobileMenu.style.transition = '';
+      }, 350);
+      
+      header.classList.remove('open');
+    } else {
+      // Open menu
+      mobileMenu.hidden = false;
+      menuBtn.setAttribute('aria-expanded', 'true');
+      header.classList.add('open');
+      // Animate max-height from 0 to scrollHeight and fade in
+      mobileMenu.style.maxHeight = '0';
+      mobileMenu.style.opacity = '0';
+      requestAnimationFrame(() => {
+        mobileMenu.style.transition = 'max-height 0.35s ease, opacity 0.35s ease';
+        mobileMenu.style.maxHeight = mobileMenu.scrollHeight + 'px';
+        mobileMenu.style.opacity = '1';
+      });
+    }
   });
 
-  // Close menu when clicking a mobile menu link
+  // Close menu when a mobile menu link is clicked
   mobileMenu.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', () => {
-      header.classList.remove('open');
-      menuBtn.setAttribute('aria-expanded', 'false');
+      if (menuBtn.getAttribute('aria-expanded') === 'true') {
+        menuBtn.click();
+      }
     });
   });
 
   // Close mobile menu on ESC key
   document.addEventListener('keydown', e => {
-    if (e.key === 'Escape' && header.classList.contains('open')) {
-      header.classList.remove('open');
-      menuBtn.setAttribute('aria-expanded', 'false');
+    if (e.key === 'Escape' && menuBtn.getAttribute('aria-expanded') === 'true') {
+      menuBtn.click();
       menuBtn.focus();
     }
   });
@@ -33,13 +63,11 @@ document.addEventListener('DOMContentLoaded', () => {
     anchor.addEventListener('click', e => {
       e.preventDefault();
       const target = document.querySelector(anchor.getAttribute('href'));
-      if (target) {
-        target.scrollIntoView({ behavior: 'smooth' });
-      }
+      if (target) target.scrollIntoView({ behavior: 'smooth' });
     });
   });
 
-  // Initialize particles.js for the hero background
+  // Initialize particles.js on #particles-js
   if (window.particlesJS) {
     particlesJS('particles-js', {
       particles: {
