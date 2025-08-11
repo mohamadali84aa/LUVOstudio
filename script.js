@@ -3,22 +3,16 @@ document.addEventListener('DOMContentLoaded', () => {
   const menuBtn = document.querySelector('.menu-btn');
   const navLinks = document.querySelector('.nav-links');
 
-  // Hamburger menu toggle
   menuBtn.addEventListener('click', () => {
     const expanded = menuBtn.getAttribute('aria-expanded') === 'true' || false;
-
-    // Toggle aria-expanded attribute for accessibility
     menuBtn.setAttribute('aria-expanded', !expanded);
 
-    // Toggle .open class for animation & menu
     header.classList.toggle('open');
     menuBtn.classList.toggle('open');
-
-    // Show/hide nav links inside header
     navLinks.classList.toggle('show');
   });
 
-  // Close menu when a nav link is clicked (mobile)
+  // Close menu when clicking a nav link (on mobile)
   navLinks.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', () => {
       header.classList.remove('open');
@@ -39,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // Smooth scrolling for anchor links
+  // Smooth scroll
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', e => {
       e.preventDefault();
@@ -50,7 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Particles.js init for #particles-js
+  // Initialize particles.js
   if (window.particlesJS) {
     particlesJS('particles-js', {
       particles: {
