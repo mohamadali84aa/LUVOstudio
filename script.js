@@ -1,23 +1,43 @@
 // script.js
 
 document.addEventListener('DOMContentLoaded', () => {
-  // ==== Hamburger menu toggle ====
   const header = document.querySelector('.header');
-const menuBtn = document.querySelector('.menu-btn');
+  const menuBtn = document.querySelector('.menu-btn');
+  const mobileMenu = document.querySelector('.mobile-menu');
 
-menuBtn.addEventListener('click', () => {
+  // Hamburger menu toggle
+  menuBtn.addEventListener('click', () => {
+    const expanded = menuBtn.getAttribute('aria-expanded') === 'true' || false;
+
+    // Toggle aria-expanded attribute for accessibility
+    menuBtn.setAttribute('aria-expanded', !expanded);
+
+    // Toggle .open classes for animation & menu
     header.classList.toggle('open');
     menuBtn.classList.toggle('open');
-});
+    mobileMenu.classList.toggle('show');
+  });
 
-// Close menu when a link is clicked
-document.querySelectorAll('.nav-links a').forEach(link => {
+  // Close menu when a nav link inside mobile menu is clicked
+  mobileMenu.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', () => {
-        header.classList.remove('open');
-        menuBtn.classList.remove('open');
+      header.classList.remove('open');
+      menuBtn.classList.remove('open');
+      mobileMenu.classList.remove('show');
+      menuBtn.setAttribute('aria-expanded', 'false');
     });
-});
+  });
 
+  // Optional: Close mobile menu on ESC key
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && mobileMenu.classList.contains('show')) {
+      header.classList.remove('open');
+      menuBtn.classList.remove('open');
+      mobileMenu.classList.remove('show');
+      menuBtn.setAttribute('aria-expanded', 'false');
+      menuBtn.focus();
+    }
+  });
 
   // ==== Smooth scrolling for anchor links ====
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -72,13 +92,4 @@ document.querySelectorAll('.nav-links a').forEach(link => {
       retina_detect: true,
     });
   }
-
-  // Optional: Close mobile menu on ESC key
-  document.addEventListener('keydown', e => {
-    if (e.key === 'Escape' && mobileMenu.classList.contains('show')) {
-      mobileMenu.classList.remove('show');
-      menuBtn.setAttribute('aria-expanded', 'false');
-      menuBtn.focus();
-    }
-  });
 });
