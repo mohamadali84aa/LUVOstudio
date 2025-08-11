@@ -1,9 +1,15 @@
-/* Black background with subtle noise */
-body, html {
-  margin: 0; padding: 0; height: 100%;
-  background: #000;
+/* Base setup */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
-  color: #fff;
+}
+
+html, body {
+  height: 100%;
+  background: #000;
+  color: white;
   overflow-x: hidden;
   position: relative;
 }
@@ -16,14 +22,14 @@ body::before {
   pointer-events: none;
   background-image: url("data:image/svg+xml;utf8,\
   <svg xmlns='http://www.w3.org/2000/svg' width='100' height='100'>\
-    <filter id='noiseFilter'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/></filter>\
-    <rect width='100%' height='100%' filter='url(%23noiseFilter)' fill='white' fill-opacity='0.03'/>\
+    <filter id='noiseFilter'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/></filter>\
+    <rect width='100%' height='100%' filter='url(%23noiseFilter)' fill='white' fill-opacity='0.04'/>\
   </svg>");
   opacity: 0.15;
   z-index: 1;
 }
 
-/* particles container - full screen behind content */
+/* particles container */
 #particles-js {
   position: fixed;
   width: 100%;
@@ -31,7 +37,6 @@ body::before {
   z-index: 0;
   top: 0;
   left: 0;
-  background: transparent;
 }
 
 /* header */
@@ -54,7 +59,6 @@ body::before {
   box-shadow: 0 6px 30px rgb(0 0 0 / 0.6);
 }
 
-/* brand font */
 .brand {
   font-family: 'Cinzel', serif;
   font-weight: 600;
@@ -64,10 +68,10 @@ body::before {
   text-decoration: none;
 }
 
-/* desktop nav */
 .nav-links {
   display: flex;
   gap: 24px;
+  z-index: 11;
 }
 
 .nav-links a {
@@ -85,7 +89,6 @@ body::before {
   transform: translateY(-2px);
 }
 
-/* hamburger button - hidden on desktop */
 .menu-btn {
   display: none;
   flex-direction: column;
@@ -107,7 +110,6 @@ body::before {
   transition: all 0.3s ease;
 }
 
-/* hamburger open animation */
 .menu-btn.open span:nth-child(1) {
   transform: translateY(9px) rotate(45deg);
 }
@@ -120,7 +122,6 @@ body::before {
   transform: translateY(-9px) rotate(-45deg);
 }
 
-/* mobile menu */
 .mobile-menu {
   position: fixed;
   top: 70px;
@@ -152,12 +153,10 @@ body::before {
   background: rgba(255 255 255 / 0.08);
 }
 
-/* show mobile menu when open */
 .mobile-menu.open {
   display: flex;
 }
 
-/* responsive */
 @media (max-width: 768px) {
   .nav-links {
     display: none;
@@ -167,7 +166,7 @@ body::before {
   }
 }
 
-/* Hero section */
+/* Hero Section */
 .hero {
   min-height: 100vh;
   display: flex;
