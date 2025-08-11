@@ -15,7 +15,8 @@
   <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
 </head>
 <body>
-  <!-- Noise background is handled by CSS on body -->
+  <!-- Noise background layer -->
+  <div class="noise-bg" aria-hidden="true"></div>
 
   <!-- Particles container only for hero -->
   <div id="particles-js" aria-hidden="true"></div>
@@ -33,7 +34,7 @@
         <a href="#contact" tabindex="0">Contact</a>
       </nav>
 
-      <button id="menuBtn" class="menu-btn" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+      <button id="menuBtn" class="menu-btn" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu" type="button">
         <span></span><span></span><span></span>
       </button>
     </div>
