@@ -171,7 +171,7 @@ main {
     outline-offset: 3px;
 }
 
-/* Mobile menu */
+/* Mobile menu container */
 .mobile-menu {
     width: 100%;
     max-width: 300px;
@@ -187,22 +187,24 @@ main {
     backdrop-filter: blur(12px);
     overflow: hidden;
     max-height: 0;
-    padding: 0; /* Changed this from 0 1rem to just 0 */
+    padding: 0;
     opacity: 0;
     visibility: hidden;
-    transition: max-height 0.35s ease-in-out, opacity 0.35s ease-in-out, visibility 0.35s ease-in-out;
+    transition: max-height 0.35s ease-in-out, opacity 0.35s ease-in-out, padding 0.35s ease-in-out;
     pointer-events: none;
     box-shadow: 0 0 12px rgba(255, 255, 255, 0.05);
 }
 
+/* Active state for smooth opening animation */
 .mobile-menu.active {
-    max-height: 400px;
+    max-height: 400px; /* A value larger than the menu's height */
     padding: 1rem;
     opacity: 1;
     visibility: visible;
     pointer-events: auto;
 }
 
+/* Mobile menu links (Home, Services, etc.) */
 .mobile-menu a {
     color: #eee;
     text-decoration: none;
@@ -210,7 +212,7 @@ main {
     padding: 0.5rem 1rem;
     user-select: none;
     transition: background-color 0.3s ease;
-    /* FIX: Make link backgrounds completely transparent */
+    /* FIX: Links have no background, inheriting the header's glassy effect */
     background: none;
     backdrop-filter: none;
 }
