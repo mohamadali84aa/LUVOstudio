@@ -183,8 +183,6 @@ main {
     font-size: 1.2rem;
     color: #eee;
     border-radius: 12px;
-    background: rgba(0, 0, 0, 0.75);
-    backdrop-filter: blur(12px);
     overflow: hidden;
     max-height: 0;
     padding: 0;
