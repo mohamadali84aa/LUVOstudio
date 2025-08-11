@@ -2,22 +2,22 @@
 
 document.addEventListener('DOMContentLoaded', () => {
   // ==== Hamburger menu toggle ====
-  const menuBtn = document.querySelector('.menu-btn');
-  const mobileMenu = document.querySelector('.mobile-menu');
+  const header = document.querySelector('.header');
+const menuBtn = document.querySelector('.menu-btn');
 
-  menuBtn.addEventListener('click', () => {
-    const expanded = menuBtn.getAttribute('aria-expanded') === 'true' || false;
-    menuBtn.setAttribute('aria-expanded', !expanded);
-    mobileMenu.classList.toggle('show');
-  });
+menuBtn.addEventListener('click', () => {
+    header.classList.toggle('open');
+    menuBtn.classList.toggle('open');
+});
 
-  // Close mobile menu when a link is clicked
-  mobileMenu.querySelectorAll('a').forEach(link => {
+// Close menu when a link is clicked
+document.querySelectorAll('.nav-links a').forEach(link => {
     link.addEventListener('click', () => {
-      mobileMenu.classList.remove('show');
-      menuBtn.setAttribute('aria-expanded', 'false');
+        header.classList.remove('open');
+        menuBtn.classList.remove('open');
     });
-  });
+});
+
 
   // ==== Smooth scrolling for anchor links ====
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
