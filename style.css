@@ -69,7 +69,7 @@ main {
     align-items: center;
     justify-content: space-between;
     border-radius: 0 0 12px 12px;
-    transition: height 0.35s ease-in-out, padding 0.35s ease-in-out;
+    transition: padding 0.35s ease-in-out;
     overflow: hidden;
 }
 
@@ -183,22 +183,25 @@ main {
     font-size: 1.2rem;
     color: #eee;
     border-radius: 12px;
-    /* FIX: The header already has the glassy background and blur */
-    background: transparent;
-    backdrop-filter: none;
+    background: rgba(0, 0, 0, 0.75); /* Added a background back, but can be removed */
+    backdrop-filter: blur(12px);
     overflow: hidden;
+    /* FIX: Set initial state for hiding */
     max-height: 0;
+    padding: 0 1rem;
     opacity: 0;
-    transition: max-height 0.35s ease-in-out, opacity 0.35s ease-in-out, padding 0.35s ease-in-out;
-    user-select: none;
+    visibility: hidden;
+    transition: max-height 0.35s ease-in-out, opacity 0.35s ease-in-out, visibility 0.35s ease-in-out;
     pointer-events: none;
     box-shadow: 0 0 12px rgba(255, 255, 255, 0.05);
 }
 
-.mobile-menu.show {
+/* FIX: New class for active state */
+.mobile-menu.active {
     max-height: 400px;
+    padding: 1rem;
     opacity: 1;
-    padding: 1rem 1rem 1rem 1rem;
+    visibility: visible;
     pointer-events: auto;
 }
 
@@ -209,7 +212,6 @@ main {
     padding: 0.5rem 1rem;
     user-select: none;
     transition: background-color 0.3s ease;
-    /* FIX: Removed background properties to make the links transparent */
     background: none;
     backdrop-filter: none;
 }
