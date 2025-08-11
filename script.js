@@ -4,20 +4,67 @@ document.addEventListener('DOMContentLoaded', () => {
     const mobileMenu = document.getElementById('mobileMenu');
     const mobileLinks = mobileMenu.querySelectorAll('a');
 
-    // Hamburger menu toggle with simple class-based visibility
+    // Toggles the mobile menu with smooth height and opacity animation
     menuBtn.addEventListener('click', () => {
         const isExpanded = menuBtn.getAttribute('aria-expanded') === 'true';
-        menuBtn.setAttribute('aria-expanded', !isExpanded);
-        header.classList.toggle('open');
-        mobileMenu.classList.toggle('active');
+
+        if (isExpanded) {
+            // Close menu with animation
+            menuBtn.setAttribute('aria-expanded', 'false');
+            mobileMenu.style.maxHeight = mobileMenu.scrollHeight + 'px';
+            requestAnimationFrame(() => {
+                mobileMenu.style.transition = 'max-height 0.35s ease-in-out, opacity 0.35s ease-in-out, padding 0.35s ease-in-out';
+                mobileMenu.style.maxHeight = '0';
+                mobileMenu.style.opacity = '0';
+                mobileMenu.style.padding = '0 1rem';
+            });
+            setTimeout(() => {
+                mobileMenu.hidden = true;
+                mobileMenu.style.transition = '';
+            }, 350);
+            header.classList.remove('open');
+        } else {
+            // Open menu with animation
+            mobileMenu.hidden = false;
+            menuBtn.setAttribute('aria-expanded', 'true');
+            header.classList.add('open');
+            mobileMenu.style.maxHeight = '0';
+            mobileMenu.style.opacity = '0';
+            requestAnimationFrame(() => {
+                mobileMenu.style.transition = 'max-height 0.35s ease-in-out, opacity 0.35s ease-in-out, padding 0.35s ease-in-out';
+                mobileMenu.style.maxHeight = mobileMenu.scrollHeight + 'px';
+                mobileMenu.style.opacity = '1';
+                mobileMenu.style.padding = '1rem';
+            });
+        }
     });
 
-    // Close menu and trigger smooth scroll when a mobile menu link is clicked
-    mobileLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            menuBtn.setAttribute('aria-expanded', 'false');
-            header.classList.remove('open');
-            mobileMenu.classList.remove('active');
+    // Handle smooth scrolling for all anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', e => {
+            // Prevent the default jump action
+            e.preventDefault();
+
+            // Store the target of the link
+            const target = document.querySelector(anchor.getAttribute('href'));
+
+            // Check if the menu is open (on mobile)
+            if (menuBtn.getAttribute('aria-expanded') === 'true') {
+                // Manually trigger the menu close animation
+                menuBtn.click();
+
+                // Wait for the animation to finish before scrolling
+                setTimeout(() => {
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth' });
+                    }
+                }, 350); // This delay should match your transition duration
+            } else {
+                // If the menu is not open (desktop), just smooth scroll immediately
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            }
         });
     });
 
@@ -27,17 +74,6 @@ document.addEventListener('DOMContentLoaded', () => {
             menuBtn.click();
             menuBtn.focus();
         }
-    });
-
-    // Smooth scrolling for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', e => {
-            e.preventDefault();
-            const target = document.querySelector(anchor.getAttribute('href'));
-            if (target) {
-                target.scrollIntoView({ behavior: 'smooth' });
-            }
-        });
     });
 
     // Initialize particles.js on #particles-js
