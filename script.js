@@ -4,63 +4,32 @@ document.addEventListener('DOMContentLoaded', () => {
     const mobileMenu = document.getElementById('mobileMenu');
     const mobileLinks = mobileMenu.querySelectorAll('a');
 
-    // Toggles the mobile menu with smooth height and opacity animation
+    // Hamburger menu toggle with simple class-based animation
     menuBtn.addEventListener('click', () => {
         const isExpanded = menuBtn.getAttribute('aria-expanded') === 'true';
-
-        if (isExpanded) {
-            // Close menu with animation
-            menuBtn.setAttribute('aria-expanded', 'false');
-            mobileMenu.style.maxHeight = mobileMenu.scrollHeight + 'px';
-            requestAnimationFrame(() => {
-                mobileMenu.style.transition = 'max-height 0.35s ease-in-out, opacity 0.35s ease-in-out, padding 0.35s ease-in-out';
-                mobileMenu.style.maxHeight = '0';
-                mobileMenu.style.opacity = '0';
-                mobileMenu.style.padding = '0 1rem';
-            });
-            setTimeout(() => {
-                mobileMenu.hidden = true;
-                mobileMenu.style.transition = '';
-            }, 350);
-            header.classList.remove('open');
-        } else {
-            // Open menu with animation
-            mobileMenu.hidden = false;
-            menuBtn.setAttribute('aria-expanded', 'true');
-            header.classList.add('open');
-            mobileMenu.style.maxHeight = '0';
-            mobileMenu.style.opacity = '0';
-            requestAnimationFrame(() => {
-                mobileMenu.style.transition = 'max-height 0.35s ease-in-out, opacity 0.35s ease-in-out, padding 0.35s ease-in-out';
-                mobileMenu.style.maxHeight = mobileMenu.scrollHeight + 'px';
-                mobileMenu.style.opacity = '1';
-                mobileMenu.style.padding = '1rem';
-            });
-        }
+        menuBtn.setAttribute('aria-expanded', !isExpanded);
+        header.classList.toggle('open');
+        mobileMenu.classList.toggle('active');
     });
 
     // Handle smooth scrolling for all anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', e => {
-            // Prevent the default jump action
             e.preventDefault();
-
-            // Store the target of the link
             const target = document.querySelector(anchor.getAttribute('href'));
 
-            // Check if the menu is open (on mobile)
-            if (menuBtn.getAttribute('aria-expanded') === 'true') {
-                // Manually trigger the menu close animation
+            if (mobileMenu.classList.contains('active')) {
+                // If the menu is open, close it with animation
                 menuBtn.click();
 
-                // Wait for the animation to finish before scrolling
+                // After the menu closes, perform the smooth scroll
                 setTimeout(() => {
                     if (target) {
                         target.scrollIntoView({ behavior: 'smooth' });
                     }
-                }, 350); // This delay should match your transition duration
+                }, 350); // The delay matches the CSS transition duration
             } else {
-                // If the menu is not open (desktop), just smooth scroll immediately
+                // If the menu is not open, just smooth scroll immediately
                 if (target) {
                     target.scrollIntoView({ behavior: 'smooth' });
                 }
