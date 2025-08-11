@@ -1,163 +1,122 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>LUVO - Capturing Moments</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>LUVO - Capturing Moments</title>
 
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
 
-  <!-- CSS -->
-  <link rel="stylesheet" href="style.css" />
-  
-  <!-- particles.js -->
-  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js" defer></script>
-  <script src="script.js" defer></script>
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css" />
+    
+    <!-- particles.js -->
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js" defer></script>
+    <script src="script.js" defer></script>
 </head>
 <body>
-  <!-- The SVG filter definition for noise -->
+    <!-- The SVG filter definition for noise -->
     <svg>
-      <filter id="noise">
-        <feTurbulence type="fractalNoise" baseFrequency="0.75" numOctaves="3" stitchTiles="stitch" />
-        <feColorMatrix type="saturate" values="0" />
-      </filter>
+        <filter id="noise">
+            <feTurbulence type="fractalNoise" baseFrequency="0.75" numOctaves="3" stitchTiles="stitch" />
+            <feColorMatrix type="saturate" values="0" />
+        </filter>
     </svg>
 
-    <!-- This div will have the SVG filter applied to it -->
-    <div class="noise-filter"></div>
-  <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #000000;
-            color: white;
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: relative; /* This is important for the overlay to work */
-        }
+    <!-- Particles container -->
+    <div id="particles-js" aria-hidden="true"></div>
 
-        /* SVG filter for the noise effect */
-        .noise-filter {
-            filter: url(#noise);
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            pointer-events: none;
-            z-index: 1; /* Place it on top of the background */
-            background-color: transparent;
-            opacity: 0.2; /* Adjust this value to change the intensity */
-        }
+    <!-- Header -->
+    <header class="header" role="banner">
+        <div class="header-inner">
+            <a href="#home" class="brand" aria-label="LUVO Home">LUVO</a>
+            <button id="menuBtn" class="menu-btn" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu" type="button">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+        <nav id="mobileMenu" class="mobile-menu" aria-label="Mobile navigation" hidden>
+            <a href="#home" tabindex="0">Home</a>
+            <a href="#services" tabindex="0">Services</a>
+            <a href="#portfolio" tabindex="0">Portfolio</a>
+            <a href="#about" tabindex="0">About</a>
+            <a href="#contact" tabindex="0">Contact</a>
+        </nav>
 
-        .content {
-            position: relative;
-            z-index: 2; /* Ensures content is on top of the noise layer */
-            text-align: center;
-            padding: 2rem;
-            background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 0.75rem;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-        }
+        <nav class="nav-links" id="navLinks" aria-label="Primary navigation">
+            <a href="#home" tabindex="0">Home</a>
+            <a href="#services" tabindex="0">Services</a>
+            <a href="#portfolio" tabindex="0">Portfolio</a>
+            <a href="#about" tabindex="0">About</a>
+            <a href="#contact" tabindex="0">Contact</a>
+        </nav>
+    </header>
 
-        h1 {
-            font-size: 2.5rem;
-            font-weight: 700;
-        }
-    </style>
+    <main>
+        <!-- This div will have the SVG filter applied to it -->
+        <div class="noise-filter"></div>
+        
+        <!-- Hero Section -->
+        <section id="home" class="section hero" tabindex="-1" aria-label="Welcome Section">
+            <div class="hero-content">
+                <h1>LUVO</h1>
+                <p>Capturing moments. Crafting stories.</p>
+                <a href="#portfolio" class="cta" role="button">View Portfolio</a>
+            </div>
+        </section>
 
-  <!-- Particles container -->
-  <div id="particles-js" aria-hidden="true"></div>
+        <!-- Services -->
+        <section id="services" class="section services" tabindex="-1" aria-label="Services Section">
+            <h2>Our Services</h2>
+            <p>We specialize in premium photography services to capture your most valuable moments with style and precision.</p>
+            <ul class="services-list" role="list">
+                <li>Professional Photography Sessions</li>
+                <li>Event and Wedding Coverage</li>
+                <li>Photo Editing & Retouching</li>
+                <li>Custom Creative Projects</li>
+            </ul>
+        </section>
 
-  <!-- Header -->
-  <header class="header" role="banner">
-    <div class="header-inner">
-      <a href="#home" class="brand" aria-label="LUVO Home">LUVO</a>
-      <button id="menuBtn" class="menu-btn" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu" type="button">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-    <nav id="mobileMenu" class="mobile-menu" aria-label="Mobile navigation" hidden>
-      <a href="#home" tabindex="0">Home</a>
-      <a href="#services" tabindex="0">Services</a>
-      <a href="#portfolio" tabindex="0">Portfolio</a>
-      <a href="#about" tabindex="0">About</a>
-      <a href="#contact" tabindex="0">Contact</a>
-    </nav>
+        <!-- Portfolio -->
+        <section id="portfolio" class="section portfolio" tabindex="-1" aria-label="Portfolio Section">
+            <h2>Portfolio</h2>
+            <p>Take a look at some of our favorite projects showcasing our attention to detail and creativity.</p>
+            <div class="portfolio-grid">
+                <div class="portfolio-item" tabindex="0" style="background-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80');" aria-label="Project 1"></div>
+                <div class="portfolio-item" tabindex="0" style="background-image: url('https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=400&q=80');" aria-label="Project 2"></div>
+                <div class="portfolio-item" tabindex="0" style="background-image: url('https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=400&q=80');" aria-label="Project 3"></div>
+                <div class="portfolio-item" tabindex="0" style="background-image: url('https://images.unsplash.com/photo-1468071174046-657d9d351a40?auto=format&fit=crop&w=400&q=80');" aria-label="Project 4"></div>
+            </div>
+        </section>
 
-    <nav class="nav-links" id="navLinks" aria-label="Primary navigation">
-      <a href="#home" tabindex="0">Home</a>
-      <a href="#services" tabindex="0">Services</a>
-      <a href="#portfolio" tabindex="0">Portfolio</a>
-      <a href="#about" tabindex="0">About</a>
-      <a href="#contact" tabindex="0">Contact</a>
-    </nav>
-  </header>
+        <!-- About -->
+        <section id="about" class="section about" tabindex="-1" aria-label="About Us Section">
+            <h2>About LUVO</h2>
+            <p>At LUVO, we believe every picture tells a story. With years of experience and a passion for excellence, our team delivers timeless visual art tailored to you.</p>
+            <p>From concept to final edit, we ensure every detail is crafted to perfection, creating memories that last a lifetime.</p>
+        </section>
 
-  <main>
-    <!-- Hero Section -->
-    <section id="home" class="section hero" tabindex="-1" aria-label="Welcome Section">
-      <div class="hero-content">
-        <h1>LUVO</h1>
-        <p>Capturing moments. Crafting stories.</p>
-        <a href="#portfolio" class="cta" role="button">View Portfolio</a>
-      </div>
-    </section>
+        <!-- Contact -->
+        <section id="contact" class="section contact" tabindex="-1" aria-label="Contact Section">
+            <h2>Contact Us</h2>
+            <form class="contact-form" novalidate>
+                <label for="name">Name</label>
+                <input type="text" id="name" required placeholder="Your Name" />
 
-    <!-- Services -->
-    <section id="services" class="section services" tabindex="-1" aria-label="Services Section">
-      <h2>Our Services</h2>
-      <p>We specialize in premium photography services to capture your most valuable moments with style and precision.</p>
-      <ul class="services-list" role="list">
-        <li>Professional Photography Sessions</li>
-        <li>Event and Wedding Coverage</li>
-        <li>Photo Editing & Retouching</li>
-        <li>Custom Creative Projects</li>
-      </ul>
-    </section>
+                <label for="email">Email</label>
+                <input type="email" id="email" required placeholder="Your Email" />
 
-    <!-- Portfolio -->
-    <section id="portfolio" class="section portfolio" tabindex="-1" aria-label="Portfolio Section">
-      <h2>Portfolio</h2>
-      <p>Take a look at some of our favorite projects showcasing our attention to detail and creativity.</p>
-      <div class="portfolio-grid">
-        <div class="portfolio-item" tabindex="0" style="background-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80');" aria-label="Project 1"></div>
-        <div class="portfolio-item" tabindex="0" style="background-image: url('https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=400&q=80');" aria-label="Project 2"></div>
-        <div class="portfolio-item" tabindex="0" style="background-image: url('https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=400&q=80');" aria-label="Project 3"></div>
-        <div class="portfolio-item" tabindex="0" style="background-image: url('https://images.unsplash.com/photo-1468071174046-657d9d351a40?auto=format&fit=crop&w=400&q=80');" aria-label="Project 4"></div>
-      </div>
-    </section>
+                <label for="message">Message</label>
+                <textarea id="message" rows="5" placeholder="Write your message here..."></textarea>
 
-    <!-- About -->
-    <section id="about" class="section about" tabindex="-1" aria-label="About Us Section">
-      <h2>About LUVO</h2>
-      <p>At LUVO, we believe every picture tells a story. With years of experience and a passion for excellence, our team delivers timeless visual art tailored to you.</p>
-      <p>From concept to final edit, we ensure every detail is crafted to perfection, creating memories that last a lifetime.</p>
-    </section>
+                <button type="submit" class="submit-btn">Send Message</button>
+            </form>
+        </section>
+    </main>
 
-    <!-- Contact -->
-    <section id="contact" class="section contact" tabindex="-1" aria-label="Contact Section">
-      <h2>Contact Us</h2>
-      <form class="contact-form" novalidate>
-        <label for="name">Name</label>
-        <input type="text" id="name" required placeholder="Your Name" />
-
-        <label for="email">Email</label>
-        <input type="email" id="email" required placeholder="Your Email" />
-
-        <label for="message">Message</label>
-        <textarea id="message" rows="5" placeholder="Write your message here..."></textarea>
-
-        <button type="submit" class="submit-btn">Send Message</button>
-      </form>
-    </section>
-  </main>
-
-  <!-- Footer -->
-  <footer role="contentinfo">
-    <p>© 2025 LUVO. All rights reserved.</p>
-  </footer>
+    <!-- Footer -->
+    <footer role="contentinfo">
+        <p>© 2025 LUVO. All rights reserved.</p>
+    </footer>
 </body>
 </html>
