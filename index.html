@@ -3,121 +3,102 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="LUVO - Creative Photography & Visual Storytelling." />
-    <meta name="keywords" content="LUVO, Photography, Portfolio, Creative Studio" />
-    <meta name="author" content="LUVO" />
-    <title>LUVO - Creative Photography</title>
+    <meta name="description" content="LUVO - Professional Creative Agency" />
+    <title>LUVO | Creative Agency</title>
 
-    <!-- Fonts & Icons -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet" />
-    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="style.css" />
+
+    <!-- Particles.js Library -->
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
 </head>
 <body>
-    <!-- HEADER / NAV -->
+    <!-- Particle Background -->
+    <div id="particles-js"></div>
+
+    <!-- Header -->
     <header>
-        <div class="container">
-            <div class="logo">LUVO</div>
-            <nav>
-                <ul class="nav-links">
-                    <li><a href="#hero">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#services">Services</a></li>
-                    <li><a href="#portfolio">Portfolio</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </nav>
-            <!-- Hamburger Menu Button -->
-            <div class="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
+        <div class="logo">LUVO</div>
+        <nav id="navbar">
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
         </div>
     </header>
 
-    <!-- HERO SECTION (Particle Background) -->
-    <section id="hero">
-        <div id="particles-js"></div>
+    <!-- Hero Section -->
+    <section id="home" class="hero">
         <div class="hero-content">
-            <h1>Capturing Stories Through Our Lens</h1>
-            <p>LUVO - Where Art Meets Photography</p>
-            <a href="#portfolio" class="btn-primary">View Our Work</a>
+            <h1>We Are <span>LUVO</span></h1>
+            <p>Creative Agency Helping Brands Shine.</p>
+            <a href="#services" class="btn">Explore Services</a>
         </div>
     </section>
 
-    <!-- ABOUT SECTION -->
-    <section id="about" class="section">
-        <div class="container">
-            <div class="about-text">
-                <h2>About LUVO</h2>
-                <p>We are a creative photography studio specializing in capturing moments that tell unique stories. Our mission is to blend artistry with technology to produce timeless visuals for our clients.</p>
+    <!-- Services -->
+    <section id="services">
+        <h2>Our Services</h2>
+        <div class="service-cards">
+            <div class="card">
+                <h3>Web Development</h3>
+                <p>Custom websites built with performance and style.</p>
             </div>
-            <div class="about-image">
-                <img src="images/about.jpg" alt="About LUVO" />
+            <div class="card">
+                <h3>Branding</h3>
+                <p>Creating strong, lasting brand identities.</p>
             </div>
-        </div>
-    </section>
-
-    <!-- SERVICES SECTION -->
-    <section id="services" class="section">
-        <div class="container">
-            <h2>Our Services</h2>
-            <div class="services-grid">
-                <div class="service-box">
-                    <h3>Portrait Photography</h3>
-                    <p>Professional portraits with natural lighting and creative composition.</p>
-                </div>
-                <div class="service-box">
-                    <h3>Event Coverage</h3>
-                    <p>Capturing every detail of your special events with precision.</p>
-                </div>
-                <div class="service-box">
-                    <h3>Commercial Shoots</h3>
-                    <p>High-quality imagery for brands, businesses, and marketing campaigns.</p>
-                </div>
+            <div class="card">
+                <h3>Digital Marketing</h3>
+                <p>Helping your business grow online and offline.</p>
             </div>
         </div>
     </section>
 
-    <!-- PORTFOLIO SECTION -->
-    <section id="portfolio" class="section">
-        <div class="container">
-            <h2>Our Work</h2>
-            <div class="portfolio-grid">
-                <div class="portfolio-item"><img src="images/work1.jpg" alt="Project 1" /></div>
-                <div class="portfolio-item"><img src="images/work2.jpg" alt="Project 2" /></div>
-                <div class="portfolio-item"><img src="images/work3.jpg" alt="Project 3" /></div>
-                <div class="portfolio-item"><img src="images/work4.jpg" alt="Project 4" /></div>
-            </div>
+    <!-- Portfolio -->
+    <section id="portfolio">
+        <h2>Our Work</h2>
+        <div class="portfolio-gallery">
+            <div class="portfolio-item">Project 1</div>
+            <div class="portfolio-item">Project 2</div>
+            <div class="portfolio-item">Project 3</div>
         </div>
     </section>
 
-    <!-- CONTACT SECTION -->
-    <section id="contact" class="section">
-        <div class="container">
-            <h2>Contact Us</h2>
-            <form action="#" method="POST" class="contact-form">
-                <input type="text" name="name" placeholder="Your Name" required />
-                <input type="email" name="email" placeholder="Your Email" required />
-                <textarea name="message" placeholder="Your Message" required></textarea>
-                <button type="submit" class="btn-primary">Send Message</button>
-            </form>
-            <div class="social-links">
-                <a href="#"><img src="icons/instagram.svg" alt="Instagram" /></a>
-                <a href="#"><img src="icons/youtube.svg" alt="YouTube" /></a>
-            </div>
-        </div>
+    <!-- About -->
+    <section id="about">
+        <h2>About Us</h2>
+        <p>LUVO is a creative agency dedicated to helping businesses stand out in the digital age. Our team of experts brings together design, development, and marketing expertise to craft unique solutions for our clients.</p>
     </section>
 
-    <!-- FOOTER -->
+    <!-- Contact -->
+    <section id="contact">
+        <h2>Contact Us</h2>
+        <form>
+            <input type="text" placeholder="Your Name" required />
+            <input type="email" placeholder="Your Email" required />
+            <textarea placeholder="Your Message" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+    </section>
+
+    <!-- Footer -->
     <footer>
-        <div class="container">
-            <p>© 2025 LUVO. All rights reserved.</p>
-        </div>
+        <p>© 2025 LUVO. All Rights Reserved.</p>
     </footer>
 
     <!-- Scripts -->
-    <script src="particles.min.js"></script>
-    <script src="app.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
