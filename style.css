@@ -17,6 +17,12 @@ body {
   min-height: 100vh;
   position: relative;
   overflow-x: hidden;
+  background-image:
+    radial-gradient(circle, rgba(255,255,255,0.03) 1px, transparent 1px),
+    radial-gradient(circle, rgba(255,255,255,0.03) 1px, transparent 1px);
+  background-position: 0 0, 5px 5px;
+  background-size: 10px 10px;
+  /* subtle grain noise effect */
 }
 
 /* === Noise background === */
@@ -53,45 +59,69 @@ body {
   left: 0;
   background: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(10px);
-  z-index: 1100;
+  z-index: 1000;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   font-weight: 600;
+
+  height: 70px; /* initial height */
+  transition: height 0.4s ease;
+  overflow: hidden; /* hide overflowing nav */
+  display: flex;
+  align-items: center;
 }
+
+.header.open {
+  height: 300px; /* expanded height */
+  align-items: flex-start;
+  padding-top: 1rem;
+}
+
 .header-inner {
   max-width: 1200px;
   margin: 0 auto;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1rem 2rem;
+  padding: 0 2rem;
 }
-.brand {
-  font-family: 'Cinzel', serif;
-  font-size: 2rem;
-  color: #fff;
-  text-decoration: none;
-  letter-spacing: 3px;
-  user-select: none;
-}
+
+/* Nav links initially hidden on mobile inside header */
 .nav-links {
   display: flex;
   gap: 2rem;
+  opacity: 0;
+  flex-direction: column;
+  margin-top: 2rem;
+  pointer-events: none;
+  transition: opacity 0.3s ease 0.3s; /* delay for smooth fade */
 }
-.nav-links a {
-  color: #eee;
-  text-decoration: none;
-  font-weight: 500;
-  font-size: 1rem;
-  padding: 0.5rem 0;
-  transition: color 0.3s ease;
-  outline-offset: 2px;
+
+/* Show nav-links when header is open (on mobile) */
+.header.open .nav-links {
+  opacity: 1;
+  pointer-events: auto;
 }
-.nav-links a:hover,
-.nav-links a:focus-visible {
-  color: #fff;
-  border-bottom: 2px solid #fff;
-  outline-offset: 4px;
+
+/* Desktop nav */
+@media (min-width: 769px) {
+  .header {
+    height: 70px !important;
+    overflow: visible !important;
+    padding-top: 0 !important;
+    align-items: center !important;
+  }
+  .nav-links {
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    flex-direction: row;
+    margin-top: 0;
+  }
+  .menu-btn {
+    display: none !important;
+  }
 }
+
 
 /* === Hamburger menu button === */
 .menu-btn {
