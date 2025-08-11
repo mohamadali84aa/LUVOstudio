@@ -32,14 +32,14 @@ main {
 /* Noise background using SVG filter for a smooth, grainy look */
 .noise-filter {
     filter: url(#noise);
-    position: absolute; /* Changed to absolute to be contained within main */
+    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     pointer-events: none;
-    z-index: 0; /* Placed in the background of the main content */
-    opacity: 0.08; /* Reduced opacity for a smoother effect */
+    z-index: 0;
+    opacity: 0.08;
 }
 
 /* Particles container */
@@ -183,12 +183,11 @@ main {
     font-size: 1.2rem;
     color: #eee;
     border-radius: 12px;
-    background: rgba(0, 0, 0, 0.75); /* Added a background back, but can be removed */
+    background: rgba(0, 0, 0, 0.75);
     backdrop-filter: blur(12px);
     overflow: hidden;
-    /* FIX: Set initial state for hiding */
     max-height: 0;
-    padding: 0 1rem;
+    padding: 0; /* Changed this from 0 1rem to just 0 */
     opacity: 0;
     visibility: hidden;
     transition: max-height 0.35s ease-in-out, opacity 0.35s ease-in-out, visibility 0.35s ease-in-out;
@@ -196,7 +195,6 @@ main {
     box-shadow: 0 0 12px rgba(255, 255, 255, 0.05);
 }
 
-/* FIX: New class for active state */
 .mobile-menu.active {
     max-height: 400px;
     padding: 1rem;
@@ -212,6 +210,7 @@ main {
     padding: 0.5rem 1rem;
     user-select: none;
     transition: background-color 0.3s ease;
+    /* FIX: Make link backgrounds completely transparent */
     background: none;
     backdrop-filter: none;
 }
@@ -239,7 +238,7 @@ main {
     margin: 0 auto;
     padding: 6rem 2rem 4rem 2rem;
     position: relative;
-    z-index: 1; /* above particles and noise */
+    z-index: 1;
     min-height: 70vh;
 }
 
