@@ -1,83 +1,84 @@
-// Hamburger menu toggle
-const menuBtn = document.getElementById('menuBtn');
-const mobileMenu = document.getElementById('mobileMenu');
+// script.js
 
-menuBtn.addEventListener('click', () => {
-  const isOpen = menuBtn.classList.toggle('open');
-  if (isOpen) {
-    mobileMenu.classList.add('open');
-    mobileMenu.removeAttribute('hidden');
-    menuBtn.setAttribute('aria-expanded', 'true');
-  } else {
-    mobileMenu.classList.remove('open');
-    mobileMenu.setAttribute('hidden', '');
-    menuBtn.setAttribute('aria-expanded', 'false');
-  }
-});
+document.addEventListener('DOMContentLoaded', () => {
+  // ==== Hamburger menu toggle ====
+  const menuBtn = document.querySelector('.menu-btn');
+  const mobileMenu = document.querySelector('.mobile-menu');
 
-// Close mobile menu if clicking outside
-document.addEventListener('click', (e) => {
-  if (!mobileMenu.contains(e.target) && !menuBtn.contains(e.target)) {
-    mobileMenu.classList.remove('open');
-    mobileMenu.setAttribute('hidden', '');
-    menuBtn.classList.remove('open');
-    menuBtn.setAttribute('aria-expanded', 'false');
-  }
-});
+  menuBtn.addEventListener('click', () => {
+    const expanded = menuBtn.getAttribute('aria-expanded') === 'true' || false;
+    menuBtn.setAttribute('aria-expanded', !expanded);
+    mobileMenu.classList.toggle('show');
+  });
 
-// Smooth scroll for all nav links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', e => {
-    e.preventDefault();
-    const target = document.querySelector(anchor.getAttribute('href'));
-    if(target) target.scrollIntoView({ behavior: 'smooth' });
-
-    // Close mobile menu on click
-    if (mobileMenu.classList.contains('open')) {
-      mobileMenu.classList.remove('open');
-      mobileMenu.setAttribute('hidden', '');
-      menuBtn.classList.remove('open');
+  // Close mobile menu when a link is clicked
+  mobileMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu.classList.remove('show');
       menuBtn.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  // ==== Smooth scrolling for anchor links ====
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', e => {
+      e.preventDefault();
+      const target = document.querySelector(anchor.getAttribute('href'));
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  });
+
+  // ==== Particles.js init only on first section ====
+  if (window.particlesJS) {
+    particlesJS('particles-js', {
+      particles: {
+        number: { value: 60, density: { enable: true, value_area: 900 } },
+        color: { value: '#fff' },
+        shape: { type: 'circle' },
+        opacity: { value: 0.6, random: true },
+        size: { value: 2, random: true },
+        line_linked: {
+          enable: true,
+          distance: 120,
+          color: '#fff',
+          opacity: 0.2,
+          width: 1,
+        },
+        move: {
+          enable: true,
+          speed: 1.5,
+          direction: 'none',
+          random: false,
+          straight: false,
+          out_mode: 'out',
+          bounce: false,
+          attract: { enable: true, rotateX: 600, rotateY: 1200 },
+        },
+      },
+      interactivity: {
+        detect_on: 'canvas',
+        events: {
+          onhover: { enable: true, mode: 'grab' },
+          onclick: { enable: true, mode: 'push' },
+          resize: true,
+        },
+        modes: {
+          grab: { distance: 140, line_linked: { opacity: 0.4 } },
+          push: { particles_nb: 4 },
+        },
+      },
+      retina_detect: true,
+    });
+  }
+
+  // Optional: Close mobile menu on ESC key
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && mobileMenu.classList.contains('show')) {
+      mobileMenu.classList.remove('show');
+      menuBtn.setAttribute('aria-expanded', 'false');
+      menuBtn.focus();
     }
   });
-});
-
-// Initialize particles.js with smooth interaction covering entire page
-particlesJS('particles-js', {
-  particles: {
-    number: { value: 40, density: { enable: true, value_area: 800 } },
-    color: { value: '#ffffff' },
-    shape: { type: 'circle' },
-    opacity: { value: 0.7, random: false },
-    size: { value: 3, random: true },
-    line_linked: {
-      enable: true,
-      distance: 150,
-      color: '#ffffff',
-      opacity: 0.3,
-      width: 1,
-    },
-    move: {
-      enable: true,
-      speed: 2,
-      direction: 'none',
-      random: false,
-      straight: false,
-      out_mode: 'out',
-      bounce: false,
-    },
-  },
-  interactivity: {
-    detect_on: 'canvas',
-    events: {
-      onhover: { enable: true, mode: 'repulse' },
-      onclick: { enable: true, mode: 'push' },
-      resize: true,
-    },
-    modes: {
-      repulse: { distance: 120, duration: 0.5 },
-      push: { particles_nb: 4 },
-    },
-  },
-  retina_detect: true,
 });
