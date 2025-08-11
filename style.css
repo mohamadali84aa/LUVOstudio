@@ -45,8 +45,10 @@ main {
 /* Particles container */
 #particles-js {
     position: fixed;
-    top: 0; left: 0;
-    width: 100vw; height: 100vh;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
     pointer-events: none;
     z-index: 0;
 }
@@ -54,11 +56,13 @@ main {
 /* Header */
 .header {
     position: fixed;
-    top: 0; left: 0; right: 0;
-    background: rgba(0,0,0,0.7);
+    top: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
     backdrop-filter: blur(8px);
     z-index: 1000;
-    border-bottom: 1px solid rgba(255,255,255,0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     padding: 1rem 2rem;
     display: flex;
     flex-wrap: wrap;
@@ -117,7 +121,7 @@ main {
 .nav-links a:hover,
 .nav-links a:focus-visible {
     color: #fff;
-    background-color: rgba(255 255 255 / 0.1);
+    background-color: rgba(255, 255, 255, 0.1);
     outline-offset: 3px;
 }
 
@@ -152,16 +156,18 @@ main {
 .menu-btn[aria-expanded="true"] span:nth-child(1) {
     transform: rotate(45deg) translate(6px, 6px);
 }
+
 .menu-btn[aria-expanded="true"] span:nth-child(2) {
     opacity: 0;
 }
+
 .menu-btn[aria-expanded="true"] span:nth-child(3) {
     transform: rotate(-45deg) translate(7px, -7px);
 }
 
 .menu-btn:hover,
 .menu-btn:focus-visible {
-    background-color: rgba(255 255 255 / 0.15);
+    background-color: rgba(255, 255, 255, 0.15);
     outline-offset: 3px;
 }
 
@@ -177,8 +183,9 @@ main {
     font-size: 1.2rem;
     color: #eee;
     border-radius: 12px;
-    background: rgba(0, 0, 0, 0.75);
-    backdrop-filter: blur(12px);
+    /* FIX: Remove direct background from the container to make it transparent */
+    /* background: rgba(0, 0, 0, 0.75); */
+    /* backdrop-filter: blur(12px); */
     overflow: hidden;
     max-height: 0;
     opacity: 0;
@@ -188,11 +195,11 @@ main {
         padding 0.35s ease-in-out;
     user-select: none;
     pointer-events: none;
-    box-shadow: 0 0 12px rgba(255 255 255 / 0.05);
+    box-shadow: 0 0 12px rgba(255, 255, 255, 0.05);
 }
 
 .mobile-menu.show {
-    max-height: 400px; /* enough height for all links */
+    max-height: 400px;
     opacity: 1;
     padding: 1rem 1rem 1rem 1rem;
     pointer-events: auto;
@@ -205,11 +212,14 @@ main {
     padding: 0.5rem 1rem;
     user-select: none;
     transition: background-color 0.3s ease;
+    /* FIX: Add the glassy background to the links themselves */
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(8px);
 }
 
 .mobile-menu a:hover,
 .mobile-menu a:focus-visible {
-    background-color: rgba(255 255 255 / 0.15);
+    background-color: rgba(255, 255, 255, 0.15);
     outline-offset: 3px;
 }
 
@@ -218,6 +228,7 @@ main {
     .nav-links {
         display: none;
     }
+
     .menu-btn {
         display: flex;
     }
@@ -264,7 +275,7 @@ main {
     font-weight: 600;
     font-size: 1.25rem;
     color: #fff;
-    background-color: rgba(255 255 255 / 0.15);
+    background-color: rgba(255, 255, 255, 0.15);
     padding: 0.75rem 2rem;
     border-radius: 12px;
     text-decoration: none;
@@ -274,7 +285,7 @@ main {
 
 .cta:hover,
 .cta:focus-visible {
-    background-color: rgba(255 255 255 / 0.3);
+    background-color: rgba(255, 255, 255, 0.3);
     outline-offset: 3px;
 }
 
@@ -317,7 +328,7 @@ main {
     background-position: center;
     aspect-ratio: 4 / 3;
     border-radius: 12px;
-    box-shadow: 0 0 10px rgba(255 255 255 / 0.07);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.07);
     cursor: pointer;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     outline-offset: 4px;
@@ -326,8 +337,8 @@ main {
 .portfolio-item:hover,
 .portfolio-item:focus-visible {
     transform: scale(1.05);
-    box-shadow: 0 0 18px rgba(255 255 255 / 0.15);
-    outline: 2px solid rgba(255 255 255 / 0.3);
+    box-shadow: 0 0 18px rgba(255, 255, 255, 0.15);
+    outline: 2px solid rgba(255, 255, 255, 0.3);
 }
 
 /* About section */
@@ -362,7 +373,7 @@ main {
     border: none;
     outline-offset: 3px;
     user-select: text;
-    background-color: rgba(255 255 255 / 0.07);
+    background-color: rgba(255, 255, 255, 0.07);
     color: #eee;
     resize: vertical;
     transition: background-color 0.3s ease;
@@ -370,12 +381,12 @@ main {
 
 .contact-form input:focus,
 .contact-form textarea:focus {
-    background-color: rgba(255 255 255 / 0.15);
+    background-color: rgba(255, 255, 255, 0.15);
     outline: 2px solid #fff;
 }
 
 .submit-btn {
-    background-color: rgba(255 255 255 / 0.15);
+    background-color: rgba(255, 255, 255, 0.15);
     color: #eee;
     border: none;
     padding: 0.9rem 1.5rem;
@@ -389,7 +400,7 @@ main {
 
 .submit-btn:hover,
 .submit-btn:focus-visible {
-    background-color: rgba(255 255 255 / 0.3);
+    background-color: rgba(255, 255, 255, 0.3);
     outline-offset: 3px;
 }
 
@@ -400,7 +411,7 @@ footer {
     font-size: 0.9rem;
     color: #aaa;
     user-select: none;
-    border-top: 1px solid rgba(255 255 255 / 0.1);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
     margin-top: 2rem;
 }
 
@@ -422,7 +433,10 @@ textarea:focus-visible {
 }
 
 /* Accessibility: remove tap highlight color on mobile for better aesthetics */
-button, a, input, textarea {
+button,
+a,
+input,
+textarea {
     -webkit-tap-highlight-color: transparent;
 }
 
@@ -451,11 +465,14 @@ body::-webkit-scrollbar {
 }
 
 /* Prevent user selection on non-inputs */
-button, a, input, textarea {
+button,
+a,
+input,
+textarea {
     user-select: none;
 }
 
 /* Reduce glow by using subtle shadows */
 .portfolio-item {
-    box-shadow: 0 0 10px rgba(255 255 255 / 0.07);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.07);
 }
