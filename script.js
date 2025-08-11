@@ -4,46 +4,20 @@ document.addEventListener('DOMContentLoaded', () => {
     const mobileMenu = document.getElementById('mobileMenu');
     const mobileLinks = mobileMenu.querySelectorAll('a');
 
-    // Hamburger menu toggle with smooth height animation
+    // Hamburger menu toggle with simple class-based visibility
     menuBtn.addEventListener('click', () => {
         const isExpanded = menuBtn.getAttribute('aria-expanded') === 'true';
-        if (isExpanded) {
-            // Close menu
-            menuBtn.setAttribute('aria-expanded', 'false');
-            mobileMenu.style.maxHeight = mobileMenu.scrollHeight + 'px';
-            requestAnimationFrame(() => {
-                mobileMenu.style.transition = 'max-height 0.35s ease, opacity 0.35s ease';
-                mobileMenu.style.maxHeight = '0';
-                mobileMenu.style.opacity = '0';
-            });
-            setTimeout(() => {
-                mobileMenu.hidden = true;
-                mobileMenu.style.transition = '';
-                mobileMenu.style.padding = '0';
-            }, 350);
-            header.classList.remove('open');
-        } else {
-            // Open menu
-            mobileMenu.hidden = false;
-            menuBtn.setAttribute('aria-expanded', 'true');
-            header.classList.add('open');
-            mobileMenu.style.maxHeight = '0';
-            mobileMenu.style.opacity = '0';
-            mobileMenu.style.padding = '1rem 1rem 1rem 1rem';
-            requestAnimationFrame(() => {
-                mobileMenu.style.transition = 'max-height 0.35s ease, opacity 0.35s ease';
-                mobileMenu.style.maxHeight = mobileMenu.scrollHeight + 'px';
-                mobileMenu.style.opacity = '1';
-            });
-        }
+        menuBtn.setAttribute('aria-expanded', !isExpanded);
+        header.classList.toggle('open');
+        mobileMenu.classList.toggle('active');
     });
 
-    // Close menu when a mobile menu link is clicked
+    // Close menu and trigger smooth scroll when a mobile menu link is clicked
     mobileLinks.forEach(link => {
         link.addEventListener('click', () => {
-            if (menuBtn.getAttribute('aria-expanded') === 'true') {
-                menuBtn.click(); // Trigger the close animation
-            }
+            menuBtn.setAttribute('aria-expanded', 'false');
+            header.classList.remove('open');
+            mobileMenu.classList.remove('active');
         });
     });
 
