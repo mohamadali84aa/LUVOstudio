@@ -1,39 +1,34 @@
 document.addEventListener('DOMContentLoaded', () => {
   const header = document.querySelector('.header');
   const menuBtn = document.querySelector('.menu-btn');
-  const navLinks = document.querySelector('.nav-links');
+  const mobileMenu = document.querySelector('.mobile-menu');
 
+  // Hamburger menu toggle
   menuBtn.addEventListener('click', () => {
-    const expanded = menuBtn.getAttribute('aria-expanded') === 'true' || false;
-    menuBtn.setAttribute('aria-expanded', !expanded);
+    const expanded = menuBtn.getAttribute('aria-expanded') === 'true';
 
+    menuBtn.setAttribute('aria-expanded', !expanded);
     header.classList.toggle('open');
-    menuBtn.classList.toggle('open');
-    navLinks.classList.toggle('show');
   });
 
-  // Close menu when clicking a nav link (on mobile)
-  navLinks.querySelectorAll('a').forEach(link => {
+  // Close menu when clicking a mobile menu link
+  mobileMenu.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', () => {
       header.classList.remove('open');
-      menuBtn.classList.remove('open');
-      navLinks.classList.remove('show');
       menuBtn.setAttribute('aria-expanded', 'false');
     });
   });
 
-  // Close menu on ESC key
+  // Close mobile menu on ESC key
   document.addEventListener('keydown', e => {
     if (e.key === 'Escape' && header.classList.contains('open')) {
       header.classList.remove('open');
-      menuBtn.classList.remove('open');
-      navLinks.classList.remove('show');
       menuBtn.setAttribute('aria-expanded', 'false');
       menuBtn.focus();
     }
   });
 
-  // Smooth scroll
+  // Smooth scrolling for anchor links
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', e => {
       e.preventDefault();
@@ -44,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Initialize particles.js
+  // Initialize particles.js for the hero background
   if (window.particlesJS) {
     particlesJS('particles-js', {
       particles: {
