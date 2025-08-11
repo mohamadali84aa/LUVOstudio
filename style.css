@@ -154,7 +154,7 @@ main {
 
 /* Hamburger animation to X */
 .menu-btn[aria-expanded="true"] span:nth-child(1) {
-    transform: rotate(45deg) translate(6px, 6px);
+    transform: rotate(45deg) translate(0px, 0px);
 }
 
 .menu-btn[aria-expanded="true"] span:nth-child(2) {
@@ -190,7 +190,7 @@ main {
     padding: 0;
     opacity: 0;
     visibility: hidden;
-    transition: max-height 0.35s ease-in-out, opacity 0.35s ease-in-out, padding 0.35s ease-in-out;
+    transition: max-height 0.65s ease-in-out, opacity 0.65s ease-in-out, padding 0.65s ease-in-out;
     pointer-events: none;
     box-shadow: 0 0 12px rgba(255, 255, 255, 0.05);
 }
