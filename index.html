@@ -8,15 +8,15 @@
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
 
-  <!-- CSS -->
+  <!-- Link to CSS -->
   <link rel="stylesheet" href="style.css" />
-
-  <!-- particles.js library -->
+  
+  <!-- particles.js -->
   <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
 </head>
 <body>
-  <!-- Particles background container -->
-  <div id="particles-js"></div>
+  <!-- Particles container only for hero -->
+  <div id="particles-js" aria-hidden="true"></div>
 
   <!-- Header -->
   <header class="header" role="banner">
@@ -45,40 +45,49 @@
     </nav>
   </header>
 
-  <!-- Main content -->
   <main>
-    <section id="home" class="section hero" tabindex="-1">
-      <h1>LUVO</h1>
-      <p>Capturing moments. Crafting stories.</p>
-      <a href="#portfolio" class="cta">View Portfolio</a>
-    </section>
-
-    <section id="services" class="section services" tabindex="-1">
-      <h2>Our Services</h2>
-      <ul class="services-list">
-        <li>Professional Photography</li>
-        <li>Event Coverage</li>
-        <li>Photo Editing & Retouching</li>
-        <li>Custom Projects</li>
-      </ul>
-    </section>
-
-    <section id="portfolio" class="section portfolio" tabindex="-1">
-      <h2>Portfolio</h2>
-      <div class="portfolio-grid">
-        <div class="portfolio-item" style="background-image: url('https://via.placeholder.com/400x300?text=Project+1');"></div>
-        <div class="portfolio-item" style="background-image: url('https://via.placeholder.com/400x300?text=Project+2');"></div>
-        <div class="portfolio-item" style="background-image: url('https://via.placeholder.com/400x300?text=Project+3');"></div>
-        <div class="portfolio-item" style="background-image: url('https://via.placeholder.com/400x300?text=Project+4');"></div>
+    <!-- Hero Section with particles -->
+    <section id="home" class="section hero" tabindex="-1" aria-label="Welcome Section">
+      <div class="hero-content">
+        <h1>LUVO</h1>
+        <p>Capturing moments. Crafting stories.</p>
+        <a href="#portfolio" class="cta" role="button">View Portfolio</a>
       </div>
     </section>
 
-    <section id="about" class="section about" tabindex="-1">
-      <h2>About LUVO</h2>
-      <p>LUVO is dedicated to telling your story through the lens. Our passion is to capture the beauty of every moment with elegance and precision.</p>
+    <!-- Services Section -->
+    <section id="services" class="section services" tabindex="-1" aria-label="Services Section">
+      <h2>Our Services</h2>
+      <p>We specialize in premium photography services to capture your most valuable moments with style and precision.</p>
+      <ul class="services-list" role="list">
+        <li>Professional Photography Sessions</li>
+        <li>Event and Wedding Coverage</li>
+        <li>Photo Editing & Retouching</li>
+        <li>Custom Creative Projects</li>
+      </ul>
     </section>
 
-    <section id="contact" class="section contact" tabindex="-1">
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="section portfolio" tabindex="-1" aria-label="Portfolio Section">
+      <h2>Portfolio</h2>
+      <p>Take a look at some of our favorite projects showcasing our attention to detail and creativity.</p>
+      <div class="portfolio-grid">
+        <div class="portfolio-item" tabindex="0" style="background-image: url('https://via.placeholder.com/400x300?text=Project+1');" aria-label="Project 1"></div>
+        <div class="portfolio-item" tabindex="0" style="background-image: url('https://via.placeholder.com/400x300?text=Project+2');" aria-label="Project 2"></div>
+        <div class="portfolio-item" tabindex="0" style="background-image: url('https://via.placeholder.com/400x300?text=Project+3');" aria-label="Project 3"></div>
+        <div class="portfolio-item" tabindex="0" style="background-image: url('https://via.placeholder.com/400x300?text=Project+4');" aria-label="Project 4"></div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section about" tabindex="-1" aria-label="About Us Section">
+      <h2>About LUVO</h2>
+      <p>At LUVO, we believe every picture tells a story. With years of experience and a passion for excellence, our team delivers timeless visual art tailored to you.</p>
+      <p>From concept to final edit, we ensure every detail is crafted to perfection, creating memories that last a lifetime.</p>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section contact" tabindex="-1" aria-label="Contact Section">
       <h2>Contact Us</h2>
       <form class="contact-form" novalidate>
         <label for="name">Name</label>
@@ -88,7 +97,7 @@
         <input type="email" id="email" required placeholder="Your Email" />
 
         <label for="message">Message</label>
-        <textarea id="message" rows="4" placeholder="Your message..."></textarea>
+        <textarea id="message" rows="5" placeholder="Write your message here..."></textarea>
 
         <button type="submit" class="submit-btn">Send Message</button>
       </form>
@@ -96,11 +105,11 @@
   </main>
 
   <!-- Footer -->
-  <footer>
+  <footer role="contentinfo">
     <p>© 2025 LUVO. All rights reserved.</p>
   </footer>
 
-  <!-- JS -->
+  <!-- Script -->
   <script src="script.js"></script>
 </body>
 </html>
