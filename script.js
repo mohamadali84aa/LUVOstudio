@@ -1,5 +1,3 @@
-// script.js
-
 document.addEventListener('DOMContentLoaded', () => {
   const header = document.querySelector('.header');
   const menuBtn = document.querySelector('.menu-btn');
@@ -28,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Optional: Close mobile menu on ESC key
+  // Close mobile menu on ESC key
   document.addEventListener('keydown', e => {
     if (e.key === 'Escape' && mobileMenu.classList.contains('show')) {
       header.classList.remove('open');
@@ -39,7 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // ==== Smooth scrolling for anchor links ====
+  // Smooth scrolling for anchor links
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', e => {
       e.preventDefault();
@@ -50,7 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // ==== Particles.js init only on first section ====
+  // Particles.js init for #particles-js
   if (window.particlesJS) {
     particlesJS('particles-js', {
       particles: {
