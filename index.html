@@ -8,40 +8,47 @@
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
 
-  <!-- Link to CSS -->
+  <!-- CSS -->
   <link rel="stylesheet" href="style.css" />
   
   <!-- particles.js -->
-  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js" defer></script>
+  <script src="script.js" defer></script>
 </head>
 <body>
-  <!-- Noise background layer -->
+  <!-- Noise background -->
   <div class="noise-bg" aria-hidden="true"></div>
 
-  <!-- Particles container only for hero -->
+  <!-- Particles container -->
   <div id="particles-js" aria-hidden="true"></div>
 
   <!-- Header -->
   <header class="header" role="banner">
     <div class="header-inner">
       <a href="#home" class="brand" aria-label="LUVO Home">LUVO</a>
-
-      <nav class="nav-links" id="navLinks" aria-label="Primary navigation">
-        <a href="#home" tabindex="0">Home</a>
-        <a href="#services" tabindex="0">Services</a>
-        <a href="#portfolio" tabindex="0">Portfolio</a>
-        <a href="#about" tabindex="0">About</a>
-        <a href="#contact" tabindex="0">Contact</a>
-      </nav>
-
-      <button id="menuBtn" class="menu-btn" aria-label="Open menu" aria-expanded="false" type="button">
+      <button id="menuBtn" class="menu-btn" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu" type="button">
         <span></span><span></span><span></span>
       </button>
     </div>
+    <nav id="mobileMenu" class="mobile-menu" aria-label="Mobile navigation" hidden>
+      <a href="#home" tabindex="0">Home</a>
+      <a href="#services" tabindex="0">Services</a>
+      <a href="#portfolio" tabindex="0">Portfolio</a>
+      <a href="#about" tabindex="0">About</a>
+      <a href="#contact" tabindex="0">Contact</a>
+    </nav>
+
+    <nav class="nav-links" id="navLinks" aria-label="Primary navigation">
+      <a href="#home" tabindex="0">Home</a>
+      <a href="#services" tabindex="0">Services</a>
+      <a href="#portfolio" tabindex="0">Portfolio</a>
+      <a href="#about" tabindex="0">About</a>
+      <a href="#contact" tabindex="0">Contact</a>
+    </nav>
   </header>
 
   <main>
-    <!-- Hero Section with particles -->
+    <!-- Hero Section -->
     <section id="home" class="section hero" tabindex="-1" aria-label="Welcome Section">
       <div class="hero-content">
         <h1>LUVO</h1>
@@ -50,7 +57,7 @@
       </div>
     </section>
 
-    <!-- Services Section -->
+    <!-- Services -->
     <section id="services" class="section services" tabindex="-1" aria-label="Services Section">
       <h2>Our Services</h2>
       <p>We specialize in premium photography services to capture your most valuable moments with style and precision.</p>
@@ -62,26 +69,26 @@
       </ul>
     </section>
 
-    <!-- Portfolio Section -->
+    <!-- Portfolio -->
     <section id="portfolio" class="section portfolio" tabindex="-1" aria-label="Portfolio Section">
       <h2>Portfolio</h2>
       <p>Take a look at some of our favorite projects showcasing our attention to detail and creativity.</p>
       <div class="portfolio-grid">
-        <div class="portfolio-item" tabindex="0" style="background-image: url('https://via.placeholder.com/400x300?text=Project+1');" aria-label="Project 1"></div>
-        <div class="portfolio-item" tabindex="0" style="background-image: url('https://via.placeholder.com/400x300?text=Project+2');" aria-label="Project 2"></div>
-        <div class="portfolio-item" tabindex="0" style="background-image: url('https://via.placeholder.com/400x300?text=Project+3');" aria-label="Project 3"></div>
-        <div class="portfolio-item" tabindex="0" style="background-image: url('https://via.placeholder.com/400x300?text=Project+4');" aria-label="Project 4"></div>
+        <div class="portfolio-item" tabindex="0" style="background-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80');" aria-label="Project 1"></div>
+        <div class="portfolio-item" tabindex="0" style="background-image: url('https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=400&q=80');" aria-label="Project 2"></div>
+        <div class="portfolio-item" tabindex="0" style="background-image: url('https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=400&q=80');" aria-label="Project 3"></div>
+        <div class="portfolio-item" tabindex="0" style="background-image: url('https://images.unsplash.com/photo-1468071174046-657d9d351a40?auto=format&fit=crop&w=400&q=80');" aria-label="Project 4"></div>
       </div>
     </section>
 
-    <!-- About Section -->
+    <!-- About -->
     <section id="about" class="section about" tabindex="-1" aria-label="About Us Section">
       <h2>About LUVO</h2>
       <p>At LUVO, we believe every picture tells a story. With years of experience and a passion for excellence, our team delivers timeless visual art tailored to you.</p>
       <p>From concept to final edit, we ensure every detail is crafted to perfection, creating memories that last a lifetime.</p>
     </section>
 
-    <!-- Contact Section -->
+    <!-- Contact -->
     <section id="contact" class="section contact" tabindex="-1" aria-label="Contact Section">
       <h2>Contact Us</h2>
       <form class="contact-form" novalidate>
@@ -103,8 +110,5 @@
   <footer role="contentinfo">
     <p>© 2025 LUVO. All rights reserved.</p>
   </footer>
-
-  <!-- Script -->
-  <script src="script.js"></script>
 </body>
 </html>
