@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
   const header = document.querySelector('.header');
   const menuBtn = document.querySelector('.menu-btn');
-  const mobileMenu = document.querySelector('.mobile-menu');
+  const navLinks = document.querySelector('.nav-links');
 
   // Hamburger menu toggle
   menuBtn.addEventListener('click', () => {
@@ -10,28 +10,30 @@ document.addEventListener('DOMContentLoaded', () => {
     // Toggle aria-expanded attribute for accessibility
     menuBtn.setAttribute('aria-expanded', !expanded);
 
-    // Toggle .open classes for animation & menu
+    // Toggle .open class for animation & menu
     header.classList.toggle('open');
     menuBtn.classList.toggle('open');
-    mobileMenu.classList.toggle('show');
+
+    // Show/hide nav links inside header
+    navLinks.classList.toggle('show');
   });
 
-  // Close menu when a nav link inside mobile menu is clicked
-  mobileMenu.querySelectorAll('a').forEach(link => {
+  // Close menu when a nav link is clicked (mobile)
+  navLinks.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', () => {
       header.classList.remove('open');
       menuBtn.classList.remove('open');
-      mobileMenu.classList.remove('show');
+      navLinks.classList.remove('show');
       menuBtn.setAttribute('aria-expanded', 'false');
     });
   });
 
-  // Close mobile menu on ESC key
+  // Close menu on ESC key
   document.addEventListener('keydown', e => {
-    if (e.key === 'Escape' && mobileMenu.classList.contains('show')) {
+    if (e.key === 'Escape' && header.classList.contains('open')) {
       header.classList.remove('open');
       menuBtn.classList.remove('open');
-      mobileMenu.classList.remove('show');
+      navLinks.classList.remove('show');
       menuBtn.setAttribute('aria-expanded', 'false');
       menuBtn.focus();
     }
