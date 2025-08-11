@@ -2,25 +2,24 @@ document.addEventListener('DOMContentLoaded', () => {
     const header = document.querySelector('.header');
     const menuBtn = document.getElementById('menuBtn');
     const mobileMenu = document.getElementById('mobileMenu');
+    const mobileLinks = mobileMenu.querySelectorAll('a');
 
     // Hamburger menu toggle with smooth height animation
     menuBtn.addEventListener('click', () => {
         const isExpanded = menuBtn.getAttribute('aria-expanded') === 'true';
-
         if (isExpanded) {
             // Close menu
             menuBtn.setAttribute('aria-expanded', 'false');
-            // Animate max-height to 0 and fade out
             mobileMenu.style.maxHeight = mobileMenu.scrollHeight + 'px';
             requestAnimationFrame(() => {
                 mobileMenu.style.transition = 'max-height 0.35s ease, opacity 0.35s ease';
                 mobileMenu.style.maxHeight = '0';
                 mobileMenu.style.opacity = '0';
             });
-            // After animation, hide menu
             setTimeout(() => {
                 mobileMenu.hidden = true;
                 mobileMenu.style.transition = '';
+                mobileMenu.style.padding = '0';
             }, 350);
             header.classList.remove('open');
         } else {
@@ -28,9 +27,9 @@ document.addEventListener('DOMContentLoaded', () => {
             mobileMenu.hidden = false;
             menuBtn.setAttribute('aria-expanded', 'true');
             header.classList.add('open');
-            // Animate max-height from 0 to scrollHeight and fade in
             mobileMenu.style.maxHeight = '0';
             mobileMenu.style.opacity = '0';
+            mobileMenu.style.padding = '1rem 1rem 1rem 1rem';
             requestAnimationFrame(() => {
                 mobileMenu.style.transition = 'max-height 0.35s ease, opacity 0.35s ease';
                 mobileMenu.style.maxHeight = mobileMenu.scrollHeight + 'px';
@@ -40,16 +39,10 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Close menu when a mobile menu link is clicked
-    mobileMenu.querySelectorAll('a').forEach(link => {
+    mobileLinks.forEach(link => {
         link.addEventListener('click', () => {
             if (menuBtn.getAttribute('aria-expanded') === 'true') {
-                // Instantly hide the menu to prevent it from blocking the scroll
-                mobileMenu.style.transition = 'none'; // Disable transition temporarily
-                mobileMenu.style.maxHeight = '0';
-                mobileMenu.style.opacity = '0';
-                mobileMenu.hidden = true;
-                menuBtn.setAttribute('aria-expanded', 'false');
-                header.classList.remove('open');
+                menuBtn.click(); // Trigger the close animation
             }
         });
     });
@@ -67,12 +60,14 @@ document.addEventListener('DOMContentLoaded', () => {
         anchor.addEventListener('click', e => {
             e.preventDefault();
             const target = document.querySelector(anchor.getAttribute('href'));
-            if (target) target.scrollIntoView({ behavior: 'smooth' });
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth' });
+            }
         });
     });
 
     // Initialize particles.js on #particles-js
-    if (window.particlesJS) {
+    if (typeof particlesJS !== 'undefined') {
         particlesJS('particles-js', {
             particles: {
                 number: { value: 60, density: { enable: true, value_area: 900 } },
