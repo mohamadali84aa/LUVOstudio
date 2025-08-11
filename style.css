@@ -183,16 +183,13 @@ main {
     font-size: 1.2rem;
     color: #eee;
     border-radius: 12px;
-    /* FIX: Remove direct background from the container to make it transparent */
-    /* background: rgba(0, 0, 0, 0.75); */
-    /* backdrop-filter: blur(12px); */
+    /* FIX: The header already has the glassy background and blur */
+    background: transparent;
+    backdrop-filter: none;
     overflow: hidden;
     max-height: 0;
     opacity: 0;
-    transition:
-        max-height 0.35s ease-in-out,
-        opacity 0.35s ease-in-out,
-        padding 0.35s ease-in-out;
+    transition: max-height 0.35s ease-in-out, opacity 0.35s ease-in-out, padding 0.35s ease-in-out;
     user-select: none;
     pointer-events: none;
     box-shadow: 0 0 12px rgba(255, 255, 255, 0.05);
@@ -212,9 +209,9 @@ main {
     padding: 0.5rem 1rem;
     user-select: none;
     transition: background-color 0.3s ease;
-    /* FIX: Add the glassy background to the links themselves */
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(8px);
+    /* FIX: Removed background properties to make the links transparent */
+    background: none;
+    backdrop-filter: none;
 }
 
 .mobile-menu a:hover,
