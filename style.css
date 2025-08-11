@@ -157,6 +157,17 @@ body {
   min-height: 70vh;
 }
 
+/* Progress Bar */
+.progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 4px;
+    background: #FFFFFF;
+    width: 0;
+    z-index: 1000;
+    transition: width 0.3s ease;
+}
 /* Hero Section */
 .hero {
   height: 100vh;
